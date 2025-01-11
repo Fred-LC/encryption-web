@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Encryption / Decryption</title>
 
         <link rel="stylesheet" href="./css/vendors/reset.css" />
@@ -14,6 +14,27 @@
     </head>
 
     <body>
-        yo
+        <h1>Encryption / Decryption</h1>
+
+        <section>
+            <form id="form">
+                <div>
+                    <label for="content">Text</label>
+                    <textarea id="content" name="text" required></textarea>
+                </div>
+
+                <div>
+                    <label for="key">Key</label>
+                    <input type="text" id="key" name="key" required />
+                </div>
+
+                <div>
+                    <button type="submit" id="decrypt">Decrypt</button>
+                    <button type="button" id="encrypt">Encrypt</button>
+                </div>
+            </form>
+
+            <div id="result"></div>
+        </section>
     </body>
 </html>
