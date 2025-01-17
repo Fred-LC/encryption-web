@@ -27,8 +27,21 @@
                     <label for="key">Key</label>
                     <div class="row">
                         <input type="password" id="key" name="key" required />
-                        <button type="button" class="display-hide" data-name="key">Voir/cacher</button>
+                        <button type="button" class="display-hide" data-name="key">Display/hide</button>
                     </div>
+                </div>
+
+                <div class="field-container row">
+                    <input type="radio" name="input-type" value="text" id="input-type-text" checked />
+                    <label for="input-type-text">Text</label>
+
+                    <input type="radio" name="input-type" value="json" id="input-type-json" />
+                    <label for="input-type-json">JSON</label>
+                </div>
+
+                <div class="field-container json-keys-container">
+                    <label for="json-keys">JSON keys to encrypt/decrypt (comma separated)</label>
+                    <input type="text" id="json-keys" name="json-keys" />
                 </div>
 
                 <div class="align-center">

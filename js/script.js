@@ -16,14 +16,40 @@ jQuery(function() {
     });
 
     function processForm(operation = 'decrypt') {
-        var content = $('#form #content').val();
-        var key = $('#form #key').val();
-        var result = '';
+        let content = $('#form #content').val();
+        let key = $('#form #key').val();
+        let inputType = $('#form [name="input-type"]:checked').val();
+        let result = '';
 
-        if ('decrypt' === operation) {
-            result = decrypt(content, key);
+        if ('json' === inputType) {
+            let jsonContent = JSON.parse(content);
+            let jsonKeys = $('#form [name="json-keys"]').val().trim().split(',');
+
+            for (const aJsonContent of jsonContent) {
+                for (jsonKey in aJsonContent) {
+                    if (aJsonContent.hasOwnProperty(jsonKey)) {
+                        if (jsonKeys.length > 0) {
+                            if (!jsonKeys.includes(jsonKey)) {
+                                continue;
+                            }
+                        }
+
+                        if ('decrypt' === operation) {
+                            aJsonContent[jsonKey] = decrypt(aJsonContent[jsonKey], key);
+                        } else {
+                            aJsonContent[jsonKey] = encrypt(aJsonContent[jsonKey], key);
+                        }
+                    }
+                }
+            }
+
+            result = JSON.stringify(jsonContent);
         } else {
-            result = encrypt(content, key);
+            if ('decrypt' === operation) {
+                result = decrypt(content, key);
+            } else {
+                result = encrypt(content, key);
+            }
         }
 
         $('#result').html(result);

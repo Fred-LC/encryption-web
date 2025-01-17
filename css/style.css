@@ -3,6 +3,10 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 body:has(> h1) {
     padding-top: 20px;
 }
@@ -100,4 +104,13 @@ button:hover,
 
 #result {
     margin-top: 50px;
+    word-wrap: break-word;
+}
+
+#form:has(#input-type-json:checked) .json-keys-container {
+    display: block;
+}
+
+.json-keys-container {
+    display: none;
 }
