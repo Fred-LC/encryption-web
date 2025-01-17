@@ -36,4 +36,11 @@ jQuery(function() {
     function encrypt(content, key) {
         return Aes.Ctr.encrypt(content, key, 256);
     }
+
+    $('#form').on('click', '.display-hide', function (event) {
+        ('password' === $('[name="' + $(this).data('name') + '"]').attr('type'))
+            ? $('[name="' + $(this).data('name') + '"]').attr('type', 'text')
+            : $('[name="' + $(this).data('name') + '"]').attr('type', 'password')
+        ;
+    });
 });
